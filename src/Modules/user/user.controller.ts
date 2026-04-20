@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { UserService } from './user.service';
+import { UppercasePipe } from 'src/custom/pipes/uppercase/uppercase.pipe';
 
 @Controller('user')
 export class UserController {
@@ -16,11 +17,17 @@ constructor(
     getUserByid(@Param('id') id: string){
         return this.userService.getUserByid(Number(id));
     }
+@Post()
+createUser(
+  @Body('name', new UppercasePipe()) name: string,
+  @Body('age') age: number
+) {
+  const user = this.userService.createUser(name, age);
 
-    @Post()
-    createUser(@Body() Data:{name:string,age:number}){
-        return this.userService.createUser(Data.name, Data.age);
-    
+  return {
+    message: `Hello, ${name}!`,
+    data: user,
+  };
 }
 
 @Put(':id')
