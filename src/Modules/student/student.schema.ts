@@ -15,7 +15,7 @@ export class Student {
     age: number;
 
     @Prop()
-    ContactNumber: number;
+    ContactNumber?: number;
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);
