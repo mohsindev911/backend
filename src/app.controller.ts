@@ -1,12 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { DatabaseService } from './database/database.service';
+import { EvService } from './services/ev/ev.service';
 
 @Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    private readonly databaseService: DatabaseService
+    private readonly databaseService: DatabaseService,
+    private readonly evService:EvService
   ) {}
 
   @Get()
@@ -18,6 +20,10 @@ export class AppController {
   return {
     status: this.databaseService.getStatus()
   }
+ }
+ @Get('db-url')
+ getUrl(){
+  return this.evService.getDbUrl();
  }
 
 }
