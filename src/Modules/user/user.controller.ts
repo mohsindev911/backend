@@ -8,7 +8,8 @@ import { HttpExceptionFilter } from 'src/filters/http-exception/http-exception.f
 @UseFilters(HttpExceptionFilter)
 export class UserController {
 constructor(
-    private readonly userService:UserService
+    private readonly userService:UserService,
+
 ){}
 
     @Get()
@@ -23,6 +24,7 @@ constructor(
 
         return this.userService.getUserByid(Number(id));
     }
+
 @Post()
 createUser(
   @Body('name', new UppercasePipe()) name: string,
