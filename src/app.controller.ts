@@ -21,9 +21,6 @@ export class AppController {
     status: this.databaseService.getStatus()
   }
  }
- @Get('db-url')
- getUrl(){
-  return this.evService.getDbUrl();
- }
+ 
 
 }
