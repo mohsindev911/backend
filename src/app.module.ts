@@ -6,12 +6,13 @@ import { CustomerModule } from './Modules/customer/customer.module';
 import { DatabaseService } from './database/database.service';
 import { EvService } from './services/ev/ev.service';
 import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 
 
 @Module({
-  imports: [UserModule, CustomerModule, ConfigModule.forRoot({
-    isGlobal:true,
-  })],
+  imports: [UserModule, CustomerModule, ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MongoDb_Url!)
+  ],
   controllers: [AppController,  ],
   providers: [AppService, DatabaseService, EvService, ],
 })
