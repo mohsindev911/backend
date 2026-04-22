@@ -13,4 +13,12 @@ export class StudentService {
         const newStudent=new this.studentModel(data);
         return newStudent.save();
     }
+
+    async GetAllStudents():Promise<Student[]>{
+        return this.studentModel.find().exec();
+    }
+
+    async GetStudentById(id:string):Promise<Student | null>{
+        return this.studentModel.findById(id).exec();
+    }
 }
