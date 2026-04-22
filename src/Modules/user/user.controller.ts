@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put, UseFilters, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UppercasePipe } from 'src/custom/pipes/uppercase/uppercase.pipe';
 import { AuthGuard } from 'src/guards/auth/auth.guard';
+import { HttpExceptionFilter } from 'src/filters/http-exception/http-exception.filter';
 
 @Controller('user')
+@UseFilters(HttpExceptionFilter)
 export class UserController {
 constructor(
     private readonly userService:UserService
@@ -17,7 +19,8 @@ constructor(
 
     @Get(':id')
     @UseGuards(AuthGuard)
-    getUserByid(@Param('id') id: string){
+    getUserByid(@Param('id', ParseIntPipe) id: string){
+
         return this.userService.getUserByid(Number(id));
     }
 @Post()

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { Customer } from './Interfaces/customer.interface';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 
@@ -8,6 +8,12 @@ export class CustomerService {
 
     getAllCustomers():Customer[]{
         return this.Customers;
+    }
+
+    getCustomerById(id:number):Customer{
+        const customerid=this.Customers.find(customer=> customer.id===id)
+        if(!customerid) throw new HttpException('Customer not found', 404);
+        return customerid
     }
 
     createCustomer(createCustomerDto:CreateCustomerDto):Customer{
