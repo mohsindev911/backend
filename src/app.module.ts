@@ -10,6 +10,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { StudentModule } from './Modules/student/student.module';
 import { TeacherModule } from './Modules/teacher/teacher.module';
 import { EmployeeModule } from './Modules/employee/employee.module';
+import { ProductModule } from './Modules/product/product.module';
 
 
 @Module({
@@ -17,7 +18,8 @@ import { EmployeeModule } from './Modules/employee/employee.module';
     MongooseModule.forRoot(process.env.MongoDb_Url!),
     StudentModule,
     TeacherModule,
-    EmployeeModule
+    EmployeeModule,
+    ProductModule
   ],
   controllers: [AppController,  ],
   providers: [AppService, DatabaseService, EvService, ],
