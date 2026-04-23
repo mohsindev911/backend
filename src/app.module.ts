@@ -8,12 +8,14 @@ import { EvService } from './services/ev/ev.service';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StudentModule } from './Modules/student/student.module';
+import { TeacherModule } from './Modules/teacher/teacher.module';
 
 
 @Module({
   imports: [UserModule, CustomerModule, ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MongoDb_Url!),
-    StudentModule
+    StudentModule,
+    TeacherModule
   ],
   controllers: [AppController,  ],
   providers: [AppService, DatabaseService, EvService, ],
