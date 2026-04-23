@@ -9,13 +9,15 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StudentModule } from './Modules/student/student.module';
 import { TeacherModule } from './Modules/teacher/teacher.module';
+import { EmployeeModule } from './Modules/employee/employee.module';
 
 
 @Module({
   imports: [UserModule, CustomerModule, ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MongoDb_Url!),
     StudentModule,
-    TeacherModule
+    TeacherModule,
+    EmployeeModule
   ],
   controllers: [AppController,  ],
   providers: [AppService, DatabaseService, EvService, ],
