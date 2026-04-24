@@ -12,6 +12,7 @@ import { TeacherModule } from './Modules/teacher/teacher.module';
 import { EmployeeModule } from './Modules/employee/employee.module';
 import { ProductModule } from './Modules/product/product.module';
 import { LibraryModule } from './Modules/library/library.module';
+import { ProjectModule } from './Modules/project/project.module';
 
 
 @Module({
@@ -21,7 +22,8 @@ import { LibraryModule } from './Modules/library/library.module';
     TeacherModule,
     EmployeeModule,
     ProductModule,
-    LibraryModule
+    LibraryModule,
+    ProjectModule
   ],
   controllers: [AppController,  ],
   providers: [AppService, DatabaseService, EvService, ],
