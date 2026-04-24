@@ -11,6 +11,7 @@ import { StudentModule } from './Modules/student/student.module';
 import { TeacherModule } from './Modules/teacher/teacher.module';
 import { EmployeeModule } from './Modules/employee/employee.module';
 import { ProductModule } from './Modules/product/product.module';
+import { LibraryModule } from './Modules/library/library.module';
 
 
 @Module({
@@ -19,7 +20,8 @@ import { ProductModule } from './Modules/product/product.module';
     StudentModule,
     TeacherModule,
     EmployeeModule,
-    ProductModule
+    ProductModule,
+    LibraryModule
   ],
   controllers: [AppController,  ],
   providers: [AppService, DatabaseService, EvService, ],
