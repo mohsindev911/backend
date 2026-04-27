@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 @Injectable()
 export class TeacherService {
     constructor(
-@InjectModel(Teacher.name) private TeacherModel:Model<Teacher>
+@InjectModel(Teacher.name) private TeacherModel:Model<Teacher>,
     ){}
 
     async CreateTeacher(data:Partial<Teacher>):Promise<Teacher>{

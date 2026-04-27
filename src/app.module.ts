@@ -13,17 +13,22 @@ import { EmployeeModule } from './Modules/employee/employee.module';
 import { ProductModule } from './Modules/product/product.module';
 import { LibraryModule } from './Modules/library/library.module';
 import { ProjectModule } from './Modules/project/project.module';
+import { AdminModule } from './Modules/admin/admin.module';
 
 
 @Module({
-  imports: [UserModule, CustomerModule, ConfigModule.forRoot(),
+  imports: [UserModule, CustomerModule, ConfigModule.forRoot({
+    isGlobal:true
+  }
+  ),
     MongooseModule.forRoot(process.env.MongoDb_Url!),
     StudentModule,
     TeacherModule,
     EmployeeModule,
     ProductModule,
     LibraryModule,
-    ProjectModule
+    ProjectModule,
+    AdminModule
   ],
   controllers: [AppController,  ],
   providers: [AppService, DatabaseService, EvService, ],
