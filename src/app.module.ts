@@ -14,13 +14,25 @@ import { ProductModule } from './Modules/product/product.module';
 import { LibraryModule } from './Modules/library/library.module';
 import { ProjectModule } from './Modules/project/project.module';
 import { AdminModule } from './Modules/admin/admin.module';
+import { ClientModule } from './Modules/client/client.module';
+import { Resolver } from './Modules/client/resolver/client.resolver';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
 
 
 @Module({
-  imports: [UserModule, CustomerModule, ConfigModule.forRoot({
+  imports: [UserModule, CustomerModule, 
+    ConfigModule.forRoot({
     isGlobal:true
   }
   ),
+GraphQLModule.forRoot<ApolloDriverConfig>({
+driver:ApolloDriver,
+autoSchemaFile:join(process.cwd(), 'src/schema.graphql'),
+playground:true,
+sortSchema:true
+}),
     MongooseModule.forRoot(process.env.MongoDb_Url!),
     StudentModule,
     TeacherModule,
@@ -28,9 +40,10 @@ import { AdminModule } from './Modules/admin/admin.module';
     ProductModule,
     LibraryModule,
     ProjectModule,
-    AdminModule
+    AdminModule,
+    ClientModule
   ],
   controllers: [AppController,  ],
-  providers: [AppService, DatabaseService, EvService, ],
+  providers: [AppService, DatabaseService, EvService, Resolver, ],
 })
 export class AppModule  {}
