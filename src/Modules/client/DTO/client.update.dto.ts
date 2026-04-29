@@ -1,4 +1,4 @@
-import { Field, InputType, PartialType } from "@nestjs/graphql";
+import { Field, ID, InputType, PartialType } from "@nestjs/graphql";
 import { ClientInputDto } from "./client.input.dto";
 import { IsNotEmpty } from "class-validator";
 

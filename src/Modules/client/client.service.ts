@@ -12,7 +12,7 @@ export class ClientService {
     ){}
 
     async CreateClient(data:ClientInputDto):Promise<Client>{
-        const created= await new  this.clientModel(data);
+        const created=  new  this.clientModel(data);
         return created.save()
 
     }

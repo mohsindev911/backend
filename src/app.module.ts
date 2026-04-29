@@ -15,10 +15,10 @@ import { LibraryModule } from './Modules/library/library.module';
 import { ProjectModule } from './Modules/project/project.module';
 import { AdminModule } from './Modules/admin/admin.module';
 import { ClientModule } from './Modules/client/client.module';
-import { Resolver } from './Modules/client/resolver/client.resolver';
-import { GraphQLModule } from '@nestjs/graphql';
+import { GraphQLModule, } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { ClientResolver } from './Modules/client/resolver/client.resolver';
 
 
 @Module({
@@ -44,6 +44,6 @@ sortSchema:true
     ClientModule
   ],
   controllers: [AppController,  ],
-  providers: [AppService, DatabaseService, EvService, Resolver, ],
+  providers: [AppService, DatabaseService, EvService, ClientResolver, ],
 })
 export class AppModule  {}

@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Client {
+  _id: ID!
+  email: String!
+  name: String!
+  username: String
+}
+
+input ClientInputDto {
+  email: String!
+  name: String!
+  username: String
+}
+
+input ClientUpdateDto {
+  email: String
+  id: ID!
+  name: String
+  username: String
+}
+
+type Mutation {
+  UpdateClient(input: ClientUpdateDto!): Client!
+  create(input: ClientInputDto!): Client!
+}
+
+type Query {
+  getAllClients: [Client!]!
+  getclient(id: String!): Client!
+}
